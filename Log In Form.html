@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            background-color: aliceblue;
+            padding: 10px;
+        }
+        table {
+            border-collapse: collapse;
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <div id="sign-in-form">
+        <h2>Sign In</h2>
+        <form id="signinForm">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+            <button type="submit">Sign In</button>
+        </form>
+    </div>
+
+    <div id="sign-out-form" style="display: none;">
+        <h2>Sign Out</h2>
+        <form id="signoutForm">
+            <p>You are signed in as: <span id="loggedInUser"></span></p>
+            <button type="button" onclick="signOut()">Sign Out</button>
+        </form>
+    </div>
+
+    <script>
+        function signOut() {
+            document.getElementById("sign-in-form").style.display = "block";
+            document.getElementById("sign-out-form").style.display = "none";
+            document.getElementById("username").value = "";
+            document.getElementById("password").value = "";
+        }
+
+        document.getElementById("signinForm").addEventListener("submit", function(event) {
+            event.preventDefault();
+            var username = document.getElementById("username").value;
+            document.getElementById("loggedInUser").textContent = username;
+            document.getElementById("sign-in-form").style.display = "none";
+            document.getElementById("sign-out-form").style.display = "block";
+        });
+    </script>
+</body>
+</html>
